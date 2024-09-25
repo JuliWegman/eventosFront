@@ -7,6 +7,8 @@ function Registro({ onRegistro }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -18,7 +20,7 @@ function Registro({ onRegistro }) {
     }
 
     // Lógica de registro
-    onRegistro({ email, password });
+    onRegistro( email, password, nombre, apellido);
 
     // Redirigir al login
     navigate("/");
@@ -36,6 +38,28 @@ function Registro({ onRegistro }) {
             placeholder="Ingresa tu email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            placeholder="Ingresa tu nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="apellido">Apellido:</label>
+          <input
+            type="text"
+            id="apellido"
+            placeholder="Ingresa tu apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
             required
           />
         </div>
@@ -61,7 +85,7 @@ function Registro({ onRegistro }) {
             required
           />
         </div>
-        <button type="submit" className="Registro-button">Registrarse</button>
+        <button>registrase</button>
       </form>
     </div>
   );

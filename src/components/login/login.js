@@ -2,16 +2,19 @@ import React from 'react'
 import { useState } from "react";
 import "./Login.css"; // Para agregar algunos estilos básicos
 import Registro from "./Registro.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí podes llamar a tu lógica de autenticación
-    onLogin({ email });
+    console.log(email,password);
+    onLogin( email,password );
+    navigate("/home")
   };
 
   return (
@@ -41,7 +44,7 @@ function Login({ onLogin }) {
           />
         </div>
         <button type="submit" className="login-button">Entrar</button>
-        <p>¿No tienes cuenta? <Link to="/Registro.js">Regístrate aquí</Link></p>
+        <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
       </form>
     </div>
   );
