@@ -1,7 +1,8 @@
 // src/components/Registro.js
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+
 
 function Registro({ onRegistro }) {
   const [email, setEmail] = useState("");
@@ -18,18 +19,16 @@ function Registro({ onRegistro }) {
       alert("Las contraseñas no coinciden");
       return;
     }
-
-    // Lógica de registro
+  
     onRegistro( email, password, nombre, apellido);
 
-    // Redirigir al login
     navigate("/");
   };
 
   return (
     <div className="Registro-container">
       <form onSubmit={handleSubmit} className="Registro-form">
-        <h2>Registrarse</h2>
+        <h2 class="form__titulo">Registrarse</h2>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -85,7 +84,8 @@ function Registro({ onRegistro }) {
             required
           />
         </div>
-        <button>registrase</button>
+        <button class = "button__login">registrase</button>
+        <p>¿Ya tienes una cuenta?<Link to="/"> Login</Link></p>
       </form>
     </div>
   );

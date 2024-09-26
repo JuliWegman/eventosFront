@@ -7,8 +7,10 @@ import axios from "axios";
 import Login from "./components/login/Login.js"
 import Registro from "./components/login/Registro.js";
 
+
+
 import {
-  BrowserRouter as Router, Route, Routes, useNavigate, Navigate  
+  BrowserRouter as Router, Route, Routes  
 } from "react-router-dom";
 
 async function register(email,password,nombre,apellido){
@@ -22,26 +24,28 @@ async function register(email,password,nombre,apellido){
 
 
 
-function App() {
-  const [eventos,setEventos]=useState([""])
-  const [cargando,setCargando]=useState(true)
-  const [logueado, setLogueado] = useState(true)
-  const [token,setToken]=useState()
-
-
-
-  async function login(email,password){
-    console.log(email,password);
+async function login(email,password){
+  try {
     const res= await axios.post("/api/user/login",{
       "username":email,
       "password":password
     })
-    setToken(res.data.token)
-    console.log(token);
+    localStorage.setItem("token",res.data.token)
+    return true
+
+  } catch (error) {
+    alert("usuario o contraseña incorrectos")
+    return false
   }
+}
 
 
 
+
+function App() {
+  const [eventos,setEventos]=useState([""])
+  const [cargando,setCargando]=useState(true)
+  const [user,setUser]=useState({})
 
   useEffect(()=>{
     async function getData(){
@@ -57,7 +61,19 @@ function App() {
 
 
   },[])
-
+  async function getUser(){
+    const config={
+      headers : {Authorization :  `Bearer ${localStorage.getItem("token")}`} 
+    }
+    try {
+      const res=await axios.get("/api/user",config)
+      console.log(res.data);
+      setUser(res.data)
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
 
   if (cargando) {
     return null
@@ -67,15 +83,18 @@ function App() {
       <Router>
             <div className="App">
               <Routes>
-                <Route path="/" element={
-                  <Login onLogin={(email,password)=>{setCargando(true);login(email,password);setCargando(false);}}/>
+                <Route path="/" element={                  
+                  <Login onLogin={login}/>
                 }></Route>
                 <Route path="/registro" element={
                   <Registro onRegistro={register}/>
                 }></Route>
-
                 <Route path="/home" element={
-                  <Eventos eventos={eventos} loading={cargando} token={token}/>
+                  <>
+                  <Header getUsuario={getUser} usuario={user} setUsuario={setUser}/>
+                  <Eventos eventos={eventos} loading={cargando} />
+                  <Footer/>
+                  </>
                 }></Route>
 
 
@@ -83,20 +102,6 @@ function App() {
             </div>
 
       </Router>
-
-
-
-
-        //  {
-        //   logueado ?
-        //   <Login/>
- 
-        //   :
-        //   <>
-        //   <Eventos/>
-        //   <Footer/>
-        //   </>
-        // } 
   );
 }
 

@@ -2,10 +2,96 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    width: 90%;
+    margin: auto;
 }
-.header__usuario{
+
+.header__titulo{
+    color: #d90429;
+}
+
+.header__info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+
+.header__user{
     display: flex;
     align-items: center;
-    padding: 2rem;
 }
+
+.header__icono{
+    margin-left: .5rem;
+    border-radius: 50%;
+    color: #696565;
+}
+
+.header__logout{
+    border: 2px solid #d90429;
+    color: #d90429;
+    border-radius: 10px;
+    padding:.6rem 2rem;
+    background-color: transparent;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.header__logout:hover{
+    background-color: #d90429;
+    color: #f7f7f7;
+
+}
+/* Estilos básicos para el footer */
+.footer {
+    background-color: #002147;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  }
+  
+  .creators {
+    font-size: 18px;
+    color: white;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .social-icons a:hover {
+    color: #4ade80; /* Cambia de color al pasar el mouse */
+  }
+  
+  .copyright {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+
+  
+  
+  
+  
+
+  
+  
+  

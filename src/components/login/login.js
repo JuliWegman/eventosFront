@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import "./Login.css"; // Para agregar algunos estilos básicos
-import Registro from "./Registro.js";
+import "./Login.css"; 
 import { Link, useNavigate } from "react-router-dom";
 
 function Login({ onLogin }) {
@@ -9,18 +8,20 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const navigate=useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí podes llamar a tu lógica de autenticación
+   
     console.log(email,password);
-    onLogin( email,password );
-    navigate("/home")
+    const log=await onLogin( email,password );
+    console.log(log);
+    if (log){navigate("/home")}
+
   };
 
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
-        <h2>Iniciar Sesión</h2>
+        <h2 className='form__titulo'>Iniciar Sesión</h2>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -43,7 +44,7 @@ function Login({ onLogin }) {
             required
           />
         </div>
-        <button type="submit" className="login-button">Entrar</button>
+        <button type="submit" className="button__login">Entrar</button>
         <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
       </form>
     </div>

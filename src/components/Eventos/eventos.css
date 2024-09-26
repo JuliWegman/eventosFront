@@ -1,0 +1,27 @@
+.eventos{
+    display: flex;
+}
+
+.eventos__body{
+    width: 80%;
+    margin: auto;
+}
+
+.evento{
+    border-left: 10px solid #d90429;
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    margin-right: 8rem;
+}
+
+.evento__header{
+    background-color: #d90429;
+    color: #f7f7f7
+}
+
+.evento__body{
+    display: flex;
+    justify-content: space-between;
+}
+
