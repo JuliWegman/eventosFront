@@ -4,7 +4,7 @@ import Eventos from "./components/Eventos/Eventos";
 import Header from "./components/Header/Header";
 import Footer from "./components/Header/Footer";
 import axios from "axios";
-import Login from "./components/login/Login.js"
+import Login from "./components/login/login.js"
 import Registro from "./components/login/Registro.js";
 
 
@@ -24,20 +24,7 @@ async function register(email,password,nombre,apellido){
 
 
 
-async function login(email,password){
-  try {
-    const res= await axios.post("/api/user/login",{
-      "username":email,
-      "password":password
-    })
-    localStorage.setItem("token",res.data.token)
-    return true
 
-  } catch (error) {
-    alert("usuario o contraseña incorrectos")
-    return false
-  }
-}
 
 
 
@@ -46,7 +33,7 @@ function App() {
   const [eventos,setEventos]=useState([""])
   const [cargando,setCargando]=useState(true)
   const [user,setUser]=useState({})
-
+  const [mensaje,setMensaje]=useState("")
   useEffect(()=>{
     async function getData(){
       const res1=await axios.get("/api/event?limit=5&offset=0")
@@ -61,6 +48,23 @@ function App() {
 
 
   },[])
+
+  async function login(email,password){
+    try {
+      const res= await axios.post("/api/user/login",{
+        "username":email,
+        "password":password
+      })
+      localStorage.setItem("token",res.data.token)
+      return true
+  
+    } catch (error) {
+      setMensaje("Usuario o contraseña incorrectos")
+      setInterval(()=>{setMensaje("")},2500)
+      return false
+    }
+  }
+
   async function getUser(){
     const config={
       headers : {Authorization :  `Bearer ${localStorage.getItem("token")}`} 
@@ -84,7 +88,7 @@ function App() {
             <div className="App">
               <Routes>
                 <Route path="/" element={                  
-                  <Login onLogin={login}/>
+                  <Login onLogin={login} mensaje={mensaje}/>
                 }></Route>
                 <Route path="/registro" element={
                   <Registro onRegistro={register}/>

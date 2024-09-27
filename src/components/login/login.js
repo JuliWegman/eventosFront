@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Login.css"; 
 import { Link, useNavigate } from "react-router-dom";
 
-function Login({ onLogin }) {
+function Login({ onLogin,mensaje }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate=useNavigate()
@@ -44,6 +44,7 @@ function Login({ onLogin }) {
             required
           />
         </div>
+        <p className='error'>{mensaje}</p>
         <button type="submit" className="button__login">Entrar</button>
         <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
       </form>

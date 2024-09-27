@@ -17,10 +17,11 @@ const Header = ({getUsuario,usuario,setUsuario}) => {
   useEffect(()=>{
     async function getData(){
       await getUsuario()
+      setLoading(false)
+
     }
 
     getData()
-    setLoading(false)
     console.log(localStorage.getItem("user")+"aaaa");
 
   },[])

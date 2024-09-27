@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
     margin: auto;
+    background-color: whitesmoke;
 }
 
 .header__titulo{
@@ -45,40 +45,17 @@
 }
 /* Estilos básicos para el footer */
 .footer {
-    background-color: #002147;
-  color: white;
   padding: 20px;
   text-align: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
+  background-color: whitesmoke;
   }
   
   .creators {
     font-size: 18px;
-    color: white;
-  }
-  
-  .social-icons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .social-icons a {
-    color: white;
-    font-size: 24px;
-    text-decoration: none;
-    padding: 10px;
-  }
-  
-  .social-icons img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .social-icons a:hover {
-    color: #4ade80; /* Cambia de color al pasar el mouse */
   }
   
   .copyright {
