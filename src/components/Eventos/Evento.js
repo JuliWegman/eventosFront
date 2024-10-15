@@ -3,7 +3,7 @@ import {faMusic, faFutbol, faPeopleGroup, faCircleQuestion} from "@fortawesome/f
 import {FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./eventos.css"
 
-const Evento = ({key,nombre,descripcion,lugar,precio}) => {
+const Evento = ({id,nombre,descripcion,lugar,precio,inscribirse}) => {
 
 
 
@@ -16,9 +16,12 @@ const Evento = ({key,nombre,descripcion,lugar,precio}) => {
                 <div className="evento__info">
                     <h3 className="evento__descripcion">{descripcion}</h3>
                     <h4 className="evento__lugar">{lugar}</h4>
+                    
                 </div>
-
+                <div>
                 <h4 className="evento__precio">${precio}</h4>
+                <button onClick={()=>{inscribirse(id)}}>inscribirse</button>
+                </div>
 
             </div>
         </div>

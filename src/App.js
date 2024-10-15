@@ -6,9 +6,6 @@ import Footer from "./components/Header/Footer";
 import axios from "axios";
 import Login from "./components/login/login.js"
 import Registro from "./components/login/Registro.js";
-
-
-
 import {
   BrowserRouter as Router, Route, Routes  
 } from "react-router-dom";

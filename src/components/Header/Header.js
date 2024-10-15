@@ -22,7 +22,6 @@ const Header = ({getUsuario,usuario,setUsuario}) => {
     }
 
     getData()
-    console.log(localStorage.getItem("user")+"aaaa");
 
   },[])
 
