@@ -1,15 +1,17 @@
 // src/components/Registro.js
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useUser } from '../../contexts/UserContext.js';
 import "./Login.css";
 
 
-function Registro({ onRegistro }) {
+function Registro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const {register} = useUser() 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -20,7 +22,7 @@ function Registro({ onRegistro }) {
       return;
     }
   
-    onRegistro( email, password, nombre, apellido);
+    register( email, password, nombre, apellido);
 
     navigate("/");
   };

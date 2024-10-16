@@ -2,7 +2,6 @@ import React,{useEffect,useState} from 'react'
 import {faUser} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from 'react-router-dom'
-
 import './header.css'
 
 const Header = ({getUsuario,usuario,setUsuario}) => {

@@ -1,21 +1,21 @@
-import React from 'react'
-import { useState } from "react";
-import "./Login.css"; 
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from '../../contexts/UserContext.js'; // Asegúrate de que la ruta sea correcta
+import "./Login.css"; 
 
-function Login({ onLogin,mensaje }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const { login,mensaje } = useUser(); // Obtén la función de login del contexto
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
-    console.log(email,password);
-    const log=await onLogin( email,password );
-    console.log(log);
-    if (log){navigate("/home")}
 
+    const success = await login(email, password); // Llama a la función de login desde el contexto
+    if (success) {
+      navigate("/home"); // Redirige a la página de inicio
+    }
   };
 
   return (

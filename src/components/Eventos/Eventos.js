@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import Evento from './Evento'
+import { Routes, Route } from 'react-router'
+import { Link } from 'react-router-dom'
 
 
 const Eventos = ({eventos,loading}) => {
@@ -31,6 +33,8 @@ const Eventos = ({eventos,loading}) => {
         <Evento id={evento.id} nombre={evento.name} descripcion={evento.description} categoria={evento.category} lugar={evento.location} precio={evento.price} inscribirse={inscribirse}/>
     ))}
     </div>
+
+    <Link to="/añadir">+</Link>
 </div>
   )
 }
