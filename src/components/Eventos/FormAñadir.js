@@ -5,7 +5,7 @@ import axios from 'axios';
 const EventForm = () => {
     const [nombreEvento, setNombreEvento] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [categoria, setCategoria] = useState(1);
     const [fecha, setFecha] = useState('');
     const [duracion, setDuracion] = useState('');
     const [precio, setPrecio] = useState('');
@@ -14,40 +14,34 @@ const EventForm = () => {
     const [categorias,setCategorias]=useState([""])
     const [cargando,setCargando]=useState(true)
     const [localidades,setLocalidades]=useState([""])
+    const [localidad,setLocalidad]=useState(1)
 
     useEffect(()=>{
         async function getData() {
             const config = {
                 headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
               };
-            const res1 = await axios.get("/api/event-category?limit=20&offset=0",config);
-            const res2=await axios.get("/api/event-location?limit=20&offset=0",config)
+            const res1 = await axios.get("/api/event-category?limit=4&offset=0",config);
+            const res2=await axios.get("/api/event-location/todos?limit=4&offset=0",config)
             setCategorias(res1.data.Colection);
             setLocalidades(res2.data.Colection)
             setCargando(false);
+            console.log(localidades);
         }
         getData();
         
-    },[categorias])
+    },[])
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const nuevoEvento = {
-            nombreEvento,
-            descripcion,
-            categoria,
-            fecha,
-            duracion: parseInt(duracion),
-            precio: parseFloat(precio),
-            habilitado,
-            asistenciaMaxima: parseInt(asistenciaMaxima),
-        };
+
 
         const config={
             headers : {Authorization :  `Bearer ${localStorage.getItem("token")}`} 
           }
         try {
-            await axios.post("/api/events", {
+            console.log(categoria);
+            await axios.post("/api/event", {
                 name: nombreEvento,
                 description: descripcion,
                 id_event_category: categoria,
@@ -93,9 +87,17 @@ const EventForm = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="categoria">Categoría:</label>
-                    <select onChange={(e)=>{setCategoria(e.target.value)}}>
+                    <select onChange={(e)=>{setCategoria(e.target.value);console.log(categoria);}}>
                         {categorias.map(categoria =>
                             <option value={categoria.id}>{categoria.name}</option>
+                        )}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="categoria">Localidad:</label>
+                    <select onChange={(e)=>{setLocalidad(e.target.value);console.log(localidad);}}>
+                        {localidades.map(loc =>
+                            <option value={loc.id}>{loc.name}</option>
                         )}
                     </select>
                 </div>

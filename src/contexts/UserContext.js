@@ -6,6 +6,7 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [mensaje, setMensaje] = useState("");
+    const [idUser,setIdUser]=useState(3)
 
     const register = async (email, password, nombre, apellido) => {
         try {
@@ -13,12 +14,14 @@ export const UserProvider = ({ children }) => {
                 first_name: nombre,
                 last_name: apellido,
                 username: email,
-                password: password
+                password: password,
+                id:idUser
             });
         } catch (error) {
             console.error("Error registering:", error);
             throw error;
         }
+        setIdUser(idUser+1)
     };
 
     const login = async (email, password) => {
