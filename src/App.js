@@ -50,7 +50,7 @@ function App() {
             <Route path="/" element={<Login/>} />
             <Route path="/registro" element={<Registro />} />
             {/* Redirección si no estás autenticado */}
-            <Route path="/home" element={user ? <Home getUser={getUser} user={user} setUser={setUser} eventos={eventos} cargando={cargando}/> : <Navigate to="/" />} />
+            <Route path="/home" element={<Home getUser={getUser} user={user} setUser={setUser} eventos={eventos} cargando={cargando}/> } />
             <Route path="/añadir" element={<FormAñadir/>}/>
           </Routes>
         </div>

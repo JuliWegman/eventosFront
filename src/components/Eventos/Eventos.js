@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import Evento from './Evento'
-import { Routes, Route } from 'react-router'
 import { Link } from 'react-router-dom'
 
 
@@ -34,7 +33,7 @@ const Eventos = ({eventos,loading}) => {
     ))}
     </div>
 
-    <Link to="/añadir">+</Link>
+    <Link to="/añadir" className='eventos__anadir'>Añadir +</Link>
 </div>
   )
 }

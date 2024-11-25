@@ -20,7 +20,7 @@ const Evento = ({id,nombre,descripcion,lugar,precio,inscribirse}) => {
                 </div>
                 <div>
                 <h4 className="evento__precio">${precio}</h4>
-                <button onClick={()=>{inscribirse(id)}}>inscribirse</button>
+                <button className="evento__boton" onClick={()=>{inscribirse(id)}}>inscribirse</button>
                 </div>
 
             </div>

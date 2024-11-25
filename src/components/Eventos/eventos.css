@@ -37,3 +37,18 @@
 .evento__body{
     padding: 1rem;
 }
+
+.evento__boton{
+    background: linear-gradient(135deg, #ff6ec4, #7873f5, #4ade80);
+    padding:.4rem 2rem;
+    color: #f7f7f7;
+    border-radius: 10px;
+    border: 2px solid #4ade80;
+    cursor: pointer;
+}
+
+.eventos__anadir{
+    background-color: #f7f7f7;
+    margin-top: 2rem;
+    padding: .5rem 2rem ;
+}

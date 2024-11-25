@@ -7,14 +7,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login,mensaje } = useUser(); // Obtén la función de login del contexto
+  const { login,mensaje } = useUser(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const success = await login(email, password); // Llama a la función de login desde el contexto
+    const success = await login(email, password); 
     if (success) {
-      navigate("/home"); // Redirige a la página de inicio
+      navigate("/home")
     }
   };
 

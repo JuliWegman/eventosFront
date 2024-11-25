@@ -4,6 +4,7 @@ import axios from 'axios';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+    const admins=["juliwegman@gmail.com"]
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [mensaje, setMensaje] = useState("");
     const [idUser,setIdUser]=useState(3)
@@ -44,10 +45,10 @@ export const UserProvider = ({ children }) => {
 
     const logout = () => {
         setToken(null);
-        localStorage.removeItem('token'); // Elimina el token de localStorage
+        localStorage.setItem('token',null); 
     };
 
-    const value = { token, mensaje, register, login, logout };
+    const value = { token, mensaje, register, login, logout,admins };
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
