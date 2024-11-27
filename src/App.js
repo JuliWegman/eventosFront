@@ -6,6 +6,7 @@ import Footer from "./components/Header/Footer";
 import axios from "axios";
 import Login from "./components/login/login.js";
 import Registro from "./components/login/Registro.js";
+import Admin from "./components/Admin/Admin.js";
 import { UserProvider, useUser } from "./contexts/UserContext.js"; // Asegúrate de importar tu contexto
 import {
   BrowserRouter as Router, Route, Routes, Navigate  
@@ -52,6 +53,14 @@ function App() {
             {/* Redirección si no estás autenticado */}
             <Route path="/home" element={<Home getUser={getUser} user={user} setUser={setUser} eventos={eventos} cargando={cargando}/> } />
             <Route path="/añadir" element={<FormAñadir/>}/>
+            <Route path="/admin" element={
+              <>
+                <Header getUsuario={getUser} usuario={user} setUsuario={setUser}/>
+                <Admin/>
+                <Footer />
+              </>
+            }/>
+
           </Routes>
         </div>
       </Router>
