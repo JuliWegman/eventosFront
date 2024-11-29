@@ -32,7 +32,8 @@ const Header = ({getUsuario,usuario,setUsuario}) => {
 
   return (
     <header className='header'>
-        <h2 className='header__titulo'>Ticket Ahrex</h2>
+      <Link to={"/home"}><h2 className='header__titulo'>Ticket Ahrex</h2></Link>
+        
         <div className='header__info'>
           {(admins.filter(admin => admin === usuario.username).length > 0) &&
             <div className='admin'>

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import "./Categorias.css"
 
-const ModificarCategorias = ({hidden,idCategoria}) => {
+const ModificarCategorias = ({setTicker,ticker,hidden,idCategoria}) => {
     const [nombre,setNombre]=useState("")
     const [displayOrder,setDisplayOrder]=useState("")
     const [cargando,setCargando]=useState(true)
@@ -23,6 +23,7 @@ const ModificarCategorias = ({hidden,idCategoria}) => {
 
     function handleSumbit(){
         updateData({nombre,displayOrder})
+        setTicker(ticker+1)
     }
     async function updateData(category){
         const config={

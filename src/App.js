@@ -12,6 +12,8 @@ import {
   BrowserRouter as Router, Route, Routes, Navigate  
 } from "react-router-dom";
 import FormAñadir from "./components/Eventos/FormAñadir.js";
+import AñadirCategoria from "./components/Admin/AñadirCategoria.js";
+import AñadirLocation from "./components/Admin/AñadirLocacion.js"
 
 function App() {
   const [eventos, setEventos] = useState([""]);
@@ -60,6 +62,9 @@ function App() {
                 <Footer />
               </>
             }/>
+            <Route path="/añadirlocacion" element={<AñadirLocation/>}/>
+            <Route path="/añadircategoria" element={<AñadirCategoria/>}/>
+
 
           </Routes>
         </div>
